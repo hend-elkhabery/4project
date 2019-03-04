@@ -31,6 +31,7 @@ public class Ingredients_activity extends AppCompatActivity {
     ArrayList<StepsModel> mStepArrayList;
     String mJsonResult;
     public static final String RECIPE_JSON_STATE = "recipe_json_list";
+    public static final String RECIPE_LIST_STATE = "recipe_details_list";
 
     Button btnsteps;
     Context context;
@@ -43,16 +44,19 @@ public class Ingredients_activity extends AppCompatActivity {
         btnsteps = (Button) findViewById(R.id.btnsteps);
         rvingr = (RecyclerView) findViewById(R.id.rvingredients);
 
-        Intent recipeIntent = getIntent();
-        ALRecipeModel = recipeIntent.getParcelableArrayListExtra(ConstantsUtil.RECIPE_INTENT_EXTRA);
-        strJsonResult = recipeIntent.getStringExtra(ConstantsUtil.JSON_RESULT_EXTRA);
-        ALIngredientModel = ALRecipeModel.get(0).getIngredients();
-
-
-        mStepArrayList = (ArrayList<StepsModel>) ALRecipeModel.get(0).getSteps();
-        mJsonResult = savedInstanceState.getString(RECIPE_JSON_STATE);
-
-
+        if (savedInstanceState != null) {
+            ALRecipeModel = savedInstanceState.getParcelableArrayList(RECIPE_LIST_STATE);
+            mJsonResult = savedInstanceState.getString(RECIPE_JSON_STATE);
+            mStepArrayList = (ArrayList<StepsModel>) ALRecipeModel.get(0).getSteps();
+            ALIngredientModel = ALRecipeModel.get(0).getIngredients();
+        } else {
+            // Get recipe from intent extra
+            Intent recipeIntent = getIntent();
+            ALRecipeModel = recipeIntent.getParcelableArrayListExtra(ConstantsUtil.RECIPE_INTENT_EXTRA);
+            mJsonResult = recipeIntent.getStringExtra(ConstantsUtil.JSON_RESULT_EXTRA);
+            mStepArrayList = (ArrayList<StepsModel>) ALRecipeModel.get(0).getSteps();
+            ALIngredientModel = ALRecipeModel.get(0).getIngredients();
+        }
         ingredientsAdapter = new IngredientsAdapter(getApplicationContext(), ALIngredientModel);
         rvingr.setAdapter(ingredientsAdapter);
         rvingr.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
