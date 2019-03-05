@@ -46,6 +46,7 @@ public class step_details_Fragment extends Fragment {
     public static final String STEP_PLAY_WHEN_READY = "step_play_when_ready";
     public static final String STEP_PLAY_WINDOW_INDEX = "step_play_window_index";
     public static final String STEP_SINGLE = "step_single";
+    private final String TAG = step_details_Activity.class.getSimpleName();
 
     StepsModel mStep;
     Uri mVideoUri;
@@ -78,6 +79,7 @@ public class step_details_Fragment extends Fragment {
         tv_step_description = view.findViewById(R.id.tv_step_description);
         ivplaceholder = view.findViewById(R.id.iv_video_placeholder);
         context = this.getContext();
+        Bundle bundle = this.getArguments();
 
 
         if (savedInstanceState != null) {
@@ -87,14 +89,16 @@ public class step_details_Fragment extends Fragment {
             mPlayerPosition = savedInstanceState.getLong(STEP_VIDEO_POSITION);
             mWindowIndex = savedInstanceState.getInt(STEP_PLAY_WINDOW_INDEX);
             mVideoUri = Uri.parse(savedInstanceState.getString(STEP_URI));
+
         } else {
+
             if (getArguments() != null) {
+                // Get arguments
+                mStep = bundle.getParcelable(ConstantsUtil.ARG_STEP_POSITION);
+
 
                 ivplaceholder.setVisibility(View.GONE);
                 playerView.setVisibility(View.VISIBLE);
-
-                // Get arguments
-                mStep = getArguments().getParcelable(ConstantsUtil.STEP_SINGLE);
 
                 // If has no video
                 if (mStep.getVideoURL().isEmpty()) {

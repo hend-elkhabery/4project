@@ -33,7 +33,7 @@ public class step_details_Activity extends AppCompatActivity {
         step_details_Fragment detailFragment = new step_details_Fragment();
         step = getIntent().getParcelableExtra(ConstantsUtil.STEP_SINGLE);
         stepsBundle = new Bundle();
-        stepsBundle.putParcelable(ConstantsUtil.STEP_SINGLE, step);
+        stepsBundle.putParcelable(ConstantsUtil.ARG_STEP_POSITION, step);
         detailFragment.setArguments(stepsBundle);
 
 
@@ -43,15 +43,5 @@ public class step_details_Activity extends AppCompatActivity {
                 .commit();
         Toast.makeText(this, "this is it ", Toast.LENGTH_LONG).show();
     }
-/*
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        if (savedInstanceState != null) {
-            ALstepModel = savedInstanceState.getParcelableArrayList(STEP_LIST_STATE);
-            mJsonResult = savedInstanceState.getString(STEP_LIST_JSON_STATE);
-            mVideoNumber = savedInstanceState.getInt(STEP_NUMBER_STATE);
-        }
-    }
-    */
+
 }

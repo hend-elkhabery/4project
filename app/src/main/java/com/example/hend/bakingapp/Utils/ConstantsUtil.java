@@ -17,8 +17,5 @@ public class ConstantsUtil {
     public static final String ARG_RECIPE_INDEX = "recipe_index";
     public static final String ARG_STEP_POSITION = "step_position";
 
-    public static String[] units = {"CUP", "TBLSP", "TSP", "G", "K", "OZ", "UNIT"};
-    public static String[] unitName = {"Cup", "Tablespoon", "Teaspoon", "Gram", "Kilogram", "Ounce", "Unit"};
-
 
 }

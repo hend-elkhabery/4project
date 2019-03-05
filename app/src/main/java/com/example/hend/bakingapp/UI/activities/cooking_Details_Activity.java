@@ -74,37 +74,15 @@ public class cooking_Details_Activity extends AppCompatActivity implements View.
             playVideoReplace(ALstepModel.get(mVideoNumber));
         }
 
-
-        Intent stepsintent = getIntent();
-        ALstepModel = stepsintent.getParcelableArrayListExtra(ConstantsUtil.STEP_ARRAYLIST);
-        //stepsModels = ALRecipeModel.get(0).getSteps();
-
-        if (savedInstanceState == null) {
-
-            fragmentManager = getSupportFragmentManager();
-
-            if (findViewById(R.id.step_details_frag) != null) {
-                mTwoPane = true;
-
-                step_details_Fragment stepDetailFragment = new step_details_Fragment();
-
-                fragmentManager.beginTransaction()
-                        .add(R.id.step_details_frag, stepDetailFragment)
-                        .commit();
-            } else {
-                mTwoPane = false;
-            }
-
-
-        }
-
 */
+
 
         handleUiForDevice();
 
 
     }
-/*
+
+
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
@@ -114,7 +92,7 @@ public class cooking_Details_Activity extends AppCompatActivity implements View.
             mVideoNumber = savedInstanceState.getInt(STEP_NUMBER_STATE);
         }
     }
-*/
+
     public void handleUiForDevice() {
         View recyclerView = findViewById(R.id.step_list);
         assert recyclerView != null;
@@ -128,9 +106,9 @@ public class cooking_Details_Activity extends AppCompatActivity implements View.
             Toast.makeText(this, "replace container ", Toast.LENGTH_SHORT).show();
 
             step_details_Fragment detailFragment = new step_details_Fragment();
+
             Bundle bundle = new Bundle();
             detailFragment.setArguments(bundle);
-
             fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
                     .replace(R.id.fl_step_details_frag, detailFragment)
@@ -143,7 +121,10 @@ public class cooking_Details_Activity extends AppCompatActivity implements View.
     public void onClick(View v) {
         if (mVideoNumber == ALstepModel.size() - 1) {
             Toast.makeText(this, "done cooking", Toast.LENGTH_SHORT).show();
-        } else {
+        }
+
+        /*
+        else {
             if (v.getId() == btnpre.getId()) {
                 mVideoNumber--;
                 if (mVideoNumber < 0) {
@@ -155,6 +136,7 @@ public class cooking_Details_Activity extends AppCompatActivity implements View.
                 playVideoReplace(ALstepModel.get(mVideoNumber));
             }
         }
+        */
     }
 
 
@@ -166,18 +148,19 @@ public class cooking_Details_Activity extends AppCompatActivity implements View.
 
     public void playVideoReplace(StepsModel step) {
 
-        step_details_Fragment videoPlayerFragment = new step_details_Fragment();
-        Bundle stepsBundle = new Bundle();
-        stepsBundle.putParcelable(ConstantsUtil.STEP_SINGLE, step);
-        videoPlayerFragment.setArguments(stepsBundle);
         if (mTwoPane) {
+            step_details_Fragment videoPlayerFragment = new step_details_Fragment();
 
+            Bundle stepsBundle = new Bundle();
+            stepsBundle.putParcelable(ConstantsUtil.ARG_STEP_POSITION, step);
+            videoPlayerFragment.setArguments(stepsBundle);
 
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
                     .replace(R.id.fl_step_details_frag, videoPlayerFragment)
                     .addToBackStack(null)
                     .commit();
+
         } else {
             Intent intent = new Intent(getApplicationContext(), step_details_Activity.class);
             intent.putExtra(ConstantsUtil.STEP_SINGLE, step);
