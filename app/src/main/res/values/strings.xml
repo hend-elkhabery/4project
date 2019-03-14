@@ -12,4 +12,5 @@
     <string name="btnprevious">previous</string>
     <string name="btnnext">next</string>
     <string name="title_activity_step_details_">step_details_Activity</string>
+    <string name="you_will_ingredients_of_latest_recipe_you_open_here">you_will_ingredients_of_latest_recipe_you_open_here</string>
 </resources>

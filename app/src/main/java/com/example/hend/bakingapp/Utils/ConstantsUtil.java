@@ -1,6 +1,6 @@
 package com.example.hend.bakingapp.Utils;
 
-public class ConstantsUtil {
+public final class ConstantsUtil {
 
     public static final String JSON_RESULT_EXTRA = "json_result_extra";
     public static final String WIDGET_EXTRA = "widget_extra";

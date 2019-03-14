@@ -1,4 +1,4 @@
-package com.example.hend.bakingapp.UI.activities;
+package com.example.hend.bakingapp.ui.activities;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.util.Log;
 
 import com.example.hend.bakingapp.Models.RecipeModel;
 import com.example.hend.bakingapp.R;
-import com.example.hend.bakingapp.UI.adapters.RecipeAdapter;
+import com.example.hend.bakingapp.ui.adapters.RecipeAdapter;
 import com.example.hend.bakingapp.restApi.Client;
 import com.example.hend.bakingapp.restApi.Service;
 import com.google.gson.Gson;

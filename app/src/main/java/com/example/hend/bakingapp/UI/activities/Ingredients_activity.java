@@ -1,4 +1,4 @@
-package com.example.hend.bakingapp.UI.activities;
+package com.example.hend.bakingapp.ui.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import com.example.hend.bakingapp.Models.IngredientModel;
 import com.example.hend.bakingapp.Models.RecipeModel;
 import com.example.hend.bakingapp.Models.StepsModel;
 import com.example.hend.bakingapp.R;
-import com.example.hend.bakingapp.UI.adapters.IngredientsAdapter;
+import com.example.hend.bakingapp.ui.adapters.IngredientsAdapter;
 import com.example.hend.bakingapp.Utils.ConstantsUtil;
 
 import java.util.ArrayList;
@@ -50,7 +50,6 @@ public class Ingredients_activity extends AppCompatActivity {
             mStepArrayList = (ArrayList<StepsModel>) ALRecipeModel.get(0).getSteps();
             ALIngredientModel = ALRecipeModel.get(0).getIngredients();
         } else {
-            // Get recipe from intent extra
             Intent recipeIntent = getIntent();
             ALRecipeModel = recipeIntent.getParcelableArrayListExtra(ConstantsUtil.RECIPE_INTENT_EXTRA);
             mJsonResult = recipeIntent.getStringExtra(ConstantsUtil.JSON_RESULT_EXTRA);

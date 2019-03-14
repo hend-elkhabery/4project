@@ -1,4 +1,4 @@
-package com.example.hend.bakingapp.UI.adapters;
+package com.example.hend.bakingapp.ui.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

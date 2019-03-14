@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".UI.activities.step_details_Fragment">
+    tools:context=".ui.activities.StepDetailsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="fill_parent"

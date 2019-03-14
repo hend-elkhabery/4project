@@ -15,21 +15,32 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".UI.activities.step_details_Activity"
+            android:name=".ui.activities.step_details_Activity"
             android:label="@string/title_activity_step_details_"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".UI.activities.cooking_Details_Activity"
+            android:name=".ui.activities.cooking_Details_Activity"
             android:label="@string/title_step_list"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".UI.activities.MainActivity">
+        <activity android:name=".ui.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UI.activities.Ingredients_activity" />
+        <activity android:name=".ui.activities.Ingredients_activity" />
+        <service android:name=".widget.WidgetService" />
+
+        <receiver android:name=".widget.WidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider_info" />
+        </receiver>
     </application>
 
 </manifest>

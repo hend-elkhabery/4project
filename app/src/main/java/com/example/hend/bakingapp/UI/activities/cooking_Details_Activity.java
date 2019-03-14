@@ -1,4 +1,4 @@
-package com.example.hend.bakingapp.UI.activities;
+package com.example.hend.bakingapp.ui.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -46,8 +46,6 @@ public class cooking_Details_Activity extends AppCompatActivity implements View.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cook_details_activity);
-
-        frameLayout = findViewById(R.id.fl_step_details_frag);
 
 
         if (findViewById(R.id.fl_step_details_frag) != null) {
@@ -105,7 +103,7 @@ public class cooking_Details_Activity extends AppCompatActivity implements View.
         } else {
             Toast.makeText(this, "replace container ", Toast.LENGTH_SHORT).show();
 
-            step_details_Fragment detailFragment = new step_details_Fragment();
+            StepDetailsFragment detailFragment = new StepDetailsFragment();
 
             Bundle bundle = new Bundle();
             detailFragment.setArguments(bundle);
@@ -149,7 +147,7 @@ public class cooking_Details_Activity extends AppCompatActivity implements View.
     public void playVideoReplace(StepsModel step) {
 
         if (mTwoPane) {
-            step_details_Fragment videoPlayerFragment = new step_details_Fragment();
+            StepDetailsFragment videoPlayerFragment = new StepDetailsFragment();
 
             Bundle stepsBundle = new Bundle();
             stepsBundle.putParcelable(ConstantsUtil.ARG_STEP_POSITION, step);

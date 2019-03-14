@@ -10,5 +10,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".UI.activities.cooking_Details_Activity"
+    tools:context=".ui.activities.cooking_Details_Activity"
     tools:listitem="@layout/step_list_content" />

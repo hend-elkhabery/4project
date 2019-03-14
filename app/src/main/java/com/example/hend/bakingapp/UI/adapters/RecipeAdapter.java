@@ -1,4 +1,4 @@
-package com.example.hend.bakingapp.UI.adapters;
+package com.example.hend.bakingapp.ui.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.example.hend.bakingapp.Models.RecipeModel;
 import com.example.hend.bakingapp.R;
-import com.example.hend.bakingapp.UI.activities.Ingredients_activity;
+import com.example.hend.bakingapp.ui.activities.Ingredients_activity;
 import com.example.hend.bakingapp.Utils.ConstantsUtil;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -28,7 +28,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     String recipeJson;
     String mJsonResult;
 
-    public RecipeAdapter(Context context, ArrayList<RecipeModel> recipeModels , String mJsonResult) {
+    public RecipeAdapter(Context context, ArrayList<RecipeModel> recipeModels, String mJsonResult) {
         this.context = context;
         this.recipeModels = recipeModels;
         this.mJsonResult = mJsonResult;
@@ -58,6 +58,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
                 alRecipeModel.add(recipeModel);
                 intent.putParcelableArrayListExtra(ConstantsUtil.RECIPE_INTENT_EXTRA, alRecipeModel);
                 intent.putExtra(ConstantsUtil.JSON_RESULT_EXTRA, recipeJson);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//not recommend
                 context.startActivity(intent);
 
 
@@ -93,7 +94,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
         }
     }
-    private String jsonToString(String jsonResult, int position){
+
+    private String jsonToString(String jsonResult, int position) {
         JsonElement jsonElement = new JsonParser().parse(jsonResult);
         JsonArray jsonArray = jsonElement.getAsJsonArray();
         JsonElement recipeElement = jsonArray.get(position);

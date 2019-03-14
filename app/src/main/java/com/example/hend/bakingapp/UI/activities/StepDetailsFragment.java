@@ -1,4 +1,4 @@
-package com.example.hend.bakingapp.UI.activities;
+package com.example.hend.bakingapp.ui.activities;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -28,16 +28,15 @@ import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 
-public class step_details_Fragment extends Fragment {
+public class StepDetailsFragment extends Fragment {
     private StepsModel step;
     Button btnpre, btnnext;
     TextView tv_step_title, tv_step_description;
     PlayerView playerView;
-    SimpleExoPlayer player;
+    private SimpleExoPlayer player;
     ImageView ivplaceholder;
 
     Context context;
@@ -56,7 +55,7 @@ public class step_details_Fragment extends Fragment {
     private String mVideoThumbnail;
     Bitmap mVideoThumbnailImage;
 
-    public step_details_Fragment() {
+    public StepDetailsFragment() {
     }
 
 
@@ -95,13 +94,11 @@ public class step_details_Fragment extends Fragment {
             if (getArguments() != null) {
                 // Get arguments
                 mStep = bundle.getParcelable(ConstantsUtil.ARG_STEP_POSITION);
-
-
                 ivplaceholder.setVisibility(View.GONE);
                 playerView.setVisibility(View.VISIBLE);
 
                 // If has no video
-                if (mStep.getVideoURL().isEmpty()) {
+                if (mStep.getVideoURL() != null && mStep.getVideoURL().isEmpty()) {
                     // Check thumbnail
                     if (mStep.getThumbnailURL().isEmpty()) {
                         // If no video or thumbnail, use placeholder image
@@ -163,16 +160,17 @@ public class step_details_Fragment extends Fragment {
         }
     }
 
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        updateStartPosition();
-        outState.putString(STEP_URI, mStep.getVideoURL());
-        outState.putParcelable(STEP_SINGLE, mStep);
-        outState.putLong(STEP_VIDEO_POSITION, mPlayerPosition);
-        outState.putBoolean(STEP_PLAY_WHEN_READY, mShouldPlayWhenReady);
-    }
-
+    /*
+        @Override
+        public void onSaveInstanceState(@NonNull Bundle outState) {
+            super.onSaveInstanceState(outState);
+            updateStartPosition();
+            outState.putString(STEP_URI, mStep.getVideoURL());
+            outState.putParcelable(STEP_SINGLE, mStep);
+            outState.putLong(STEP_VIDEO_POSITION, mPlayerPosition);
+            outState.putBoolean(STEP_PLAY_WHEN_READY, mShouldPlayWhenReady);
+        }
+    */
     private void updateStartPosition() {
         if (player != null) {
             mShouldPlayWhenReady = player.getPlayWhenReady();

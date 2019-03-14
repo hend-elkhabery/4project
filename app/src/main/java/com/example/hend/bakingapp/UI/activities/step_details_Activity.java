@@ -1,4 +1,4 @@
-package com.example.hend.bakingapp.UI.activities;
+package com.example.hend.bakingapp.ui.activities;
 
 import android.os.Bundle;
 import android.widget.Toast;
@@ -30,7 +30,7 @@ public class step_details_Activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        step_details_Fragment detailFragment = new step_details_Fragment();
+        StepDetailsFragment detailFragment = new StepDetailsFragment();
         step = getIntent().getParcelableExtra(ConstantsUtil.STEP_SINGLE);
         stepsBundle = new Bundle();
         stepsBundle.putParcelable(ConstantsUtil.ARG_STEP_POSITION, step);
